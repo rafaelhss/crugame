@@ -21,7 +21,12 @@
             
           
         <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
-        <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
+        <audio id="sfx-copabr" src="sound/copabr.ogg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-rosca" src="sound/rosca.ogg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-falazeze" src="sound/falazeze.mpeg" crossorigin="anonymous" preload="true" ></audio>
+        
+          
+          <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
         <img id="orangebump" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Forangebump1.jpg?1510639083481" crossorigin="anonymous" /> 
           
           
@@ -41,7 +46,7 @@
           <img id="ceni" src="img/people/ceni.png" crossorigin="anonymous" />
           <img id="choro" src="img/people/choro.png" crossorigin="anonymous" />
           <img id="fe" src="img/people/fe.png" crossorigin="anonymous" />
-          <img id="fred" src="img/people/fred.png" crossorigin="anonymous" />
+          <img id="bola" src="img/people/bola.png" crossorigin="anonymous" />
           <img id="gordo" src="img/people/gordo.png" crossorigin="anonymous" />
           <img id="itair" src="img/people/itair.png" crossorigin="anonymous" />
           <img id="perrella" src="img/people/perrella.png" crossorigin="anonymous" />
@@ -50,13 +55,14 @@
           <img id="wagner" src="img/people/wagner.png" crossorigin="anonymous" />
           
           <a-mixin id="text" text="align: center; value: anos na serie B"></a-mixin>
+         <a-mixin id="tutorial" text="align: center; value: #borareconstruir ajude o cabuloso! Afaste a serie B usando toda a tradicao azul!"></a-mixin>
          
       </a-assets>
         
     
       <a-entity id="cam" camera="userHeight: 1.6" look-controls wasd-controls position="0 0 10">
         
-          <a-entity cursor
+            <a-entity cursor
                   position="0 0 -0.5"
                    
                   geometry="primitive: circle; radius: 0.01; segments: 4;"
@@ -65,52 +71,64 @@
         
       <a-entity id="env1" environment="preset:forest; shadow:true; seed:19; lightPosition: 0.7 0.7 0.7"></a-entity>
       
+        
+        <a-text mixin="tutorial" id="tutorial" rotation="0 20 0" font="kelsonsans" position="0 2 5" width="8" wrap-count="20"></a-text> 
+        
+        
      <a-entity id="texto" position="8.5 5 -2.5"  text="value: Hello World;"></a-entity>
         <a-sphere  
                 obj-model="obj: #ghost-obj;" 
                   id="ghost"
                   rotation="0 310 0"
-                 position="8.5 15 -2.5"  dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+                 position="8.5 60 -2.5"  dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
      <a-box id="terrainscore"  width="2" height="0.1" depth="2" position="8.5 5 -2.5" static-body visible="false"></a-box>
         
         <a-text mixin="text"  rotation="0 310 0" font="kelsonsans" position="8.9 4.65 -0.94" width="8" wrap-count="10"></a-text> 
         <a-text id="score" rotation="0 310 0" text="value: 1;" font="kelsonsans" position="9.8 7.34 -1" width="60"></a-text> 
         
-        <a-entity id="throw0" 
+        <a-entity id="throw0"
+                  class="throw"
                   dynamic-body 
                   velocity="0 0 20" 
-                  sound="src: #sfx-gun; autoplay: false;" 
+                  sound="src: #sfx-copabr; autoplay: false;" 
                   obj-model="obj: #trophy1-obj;" 
                   position="0 5 20" 
                   shadow rotation="0 90 0"
                   scale="0.3 0.5 0.3"
                   material="src: #copabr; repeat: 50 10"></a-entity>   
         <a-entity id="throw1" 
+                  class="throw"
                   dynamic-body 
                   velocity="0 0 20" 
-                  sound="src: #sfx-gun; autoplay: false;" 
+                  sound="src: #sfx-rosca; autoplay: false;" 
                   obj-model="obj: #trophy2-obj;" 
                   position="0 5 20" 
                   shadow rotation="0 90 0"
                   material="src: #brasileirao; repeat: 5 5"></a-entity>           
         <a-entity id="throw2" 
+                  class="throw"
                   dynamic-body 
                   position="0 5 20" 
-                  velocity="0 0 20" 
+                  velocity="0 0 20"
+                  sound="src: #sfx-faazeze; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #timegrandesrc; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
         <a-entity id="throw3" 
+                  class="throw"
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
+                  sound="src: #sfx-rosca; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #six; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
         <a-entity id="throw4" 
+                  class="throw"
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
+                  sound="src: #sfx-copabr; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #fabio; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>        
@@ -164,7 +182,7 @@
                dynamic-body force-pushable shadow></a-box>
         <a-box class="people" height="3" depth="3" width="0.1" 
                position="-8.5 0.7 5" 
-               material="src: #tiago; repeat: 1 1; transparent:true"
+               material="src: #bola; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
         <a-box class="people" height="3" depth="3" width="0.1" 
                position="-8.5 0.7 1" 
@@ -173,7 +191,7 @@
      
         <a-box class="people" height="3" depth="3" width="0.1" 
                position="-8.5 0.7 -2.5" 
-               material="src: #gordo; repeat: 1 1; transparent:true"
+               material="src: #tiago; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
         <a-box class="people" height="3" depth="3" width="0.1" 
                position="-8.5 0.7 -5.8" 
@@ -181,7 +199,7 @@
                dynamic-body force-pushable shadow></a-box>        
         <a-box class="people" height="3" depth="3" width="0.1" 
                position="-8.5 0.7 -9" 
-               material="src: #fred; repeat: 1 1; transparent:true"
+               material="src: #gordo; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>  
         
         <!-- Blocks row 1 -->
@@ -203,13 +221,26 @@
   </body>
   <script>
     
-    setInterval(function(){
-  //    document.querySelector("#test").body.velocity.set(0, 0, 2);
-        var enemies = document.getElementsByClassName("enemy");
-        for (var i = 0; i < enemies.length; i++) {
-           enemies.item(i).body.velocity.set(0, 0, 2);;
-        }    
-    },1000)  
+    setTimeout(function(){
+        window.addEventListener('mouseup', function () {
+            var itenN = Math.floor(Math.random() * 5);
+            dothrow("#throw" + itenN);
+            jumpPeople(3);
+        });
+        
+        document.getElementById("tutorial").setAttribute("visible",false);
+        
+        setInterval(function(){
+            var enemies = document.getElementsByClassName("throw");
+            for (var i = 0; i < enemies.length; i++) {
+                enemies.item(i).body.velocity.set(0, 0, 2);;
+            }    
+        },1000) 
+    }, 600)
+      
+      
+      
+ 
       
       
     function DegreesToRadians(valDeg){
@@ -220,7 +251,7 @@
     function jumpPeople(qtd){
         var people = document.getElementsByClassName("people");
         for (var i = 0; i < qtd; i++) {
-           people.item(Math.floor(Math.random() * people.length)).body.velocity.set(0, 2, 0);;
+           people.item(Math.floor(Math.random() * people.length)).body.velocity.set(0, 1, 0);;
         }
     }  
     function dothrow(item){
@@ -247,24 +278,15 @@
         document.querySelector(item).body.velocity.set(-velocityX, up, -velocityY);
         console.log(document.querySelector(item).body.velocity)
         
-        //document.querySelector("#throw5").components.sound.playSound();
+        
+        var throwitens = document.getElementsByClassName("throw");
+        for (var i = 0; i < throwitens.length; i++) {
+            throwitens.item(i).components.sound.stopSound();
+        } 
+
+        document.querySelector(item).components.sound.playSound();
     }  
       
-    window.addEventListener('click', function () {
-      // METHOD1 - ADD A NEW ORANGE TO SCENE - not working
-      // const orange =
-      // `<a-entity class="orange" dynamic-body velocity="0 0 -10" geometry="primitive: sphere; radius: 0.1" position="0 2 -2" material="src: #orangesrc; roughness: 0.48; color: #edaa45;" shadow="cast:true;receive:true"></a-entity>`
-      // var el = document.createElement('a-entity');
-      // AFRAME.scenes[0].appendChild(el);
-      // el.innerHTML = orange;
-      // el.setAttribute('dynamic-body');
-
-        var itenN = Math.floor(Math.random() * 5);
-        dothrow("#throw" + itenN);
-        jumpPeople(3);
-       
-        
-    });
       
       
     var playerEl = document.getElementById("wall")
