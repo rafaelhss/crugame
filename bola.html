@@ -83,10 +83,12 @@
         
         <a-text mixin="tutorial" id="tutorial" rotation="0 20 0" font="kelsonsans" position="0 2 5" width="8" wrap-count="20"></a-text> 
         
-        <a-box id="vemk" scale="5 5 5" position="2000 5 -10"
+        <a-sphere id="vemk" scale="2 2 2" position="2 3 2"
+                  rotation="0 250 0"
                material="src: #vemkimg; repeat: 1 1; transparent:true"
-               dynamic-body shadow>
-        </a-box>
+               shadow
+                  visible="false">
+        </a-sphere>
         
         
      <a-entity id="texto" position="8.5 5 -2.5"  text="value: Hello World;"></a-entity>
@@ -280,7 +282,8 @@
                         enemies.item(i).body.velocity.set(0, 0, 0);;
                     }  
                     document.getElementById("timer").setAttribute("text", "value: Fim de jogo.");
-                    document.getElementById("vemk").body.position.set(0, 5, 0);
+                    document.getElementById("vemk").setAttribute("visible",true);
+
                     clearInterval(tempointerval);
 
                 } else {
