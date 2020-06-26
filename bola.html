@@ -41,6 +41,7 @@
           <img id="fabio" src="img/fabio.png" crossorigin="anonymous" /> 
           <img id="b" src="img/b.png" crossorigin="anonymous" /> 
           <img id="cerca" src="img/cerca.png" crossorigin="anonymous" /> 
+          <img id="vemkimg" src="img/vemk.png" crossorigin="anonymous" /> 
           
           
           <img id="aecio" src="img/people/aecio.png" crossorigin="anonymous" />
@@ -58,6 +59,7 @@
           
           <a-mixin id="text" text="align: center; value: anos na serie B"></a-mixin>
          <a-mixin id="tutorial" text="align: center; value: #borareconstruir ajude o cabuloso! Afaste a serie B usando toda a tradicao azul!"></a-mixin>
+                 
          
       </a-assets>
         
@@ -76,6 +78,11 @@
         
         <a-text mixin="tutorial" id="tutorial" rotation="0 20 0" font="kelsonsans" position="0 2 5" width="8" wrap-count="20"></a-text> 
         
+        <a-box id="vemk" scale="5 5 5" position="2000 5 -10"
+               material="src: #vemkimg; repeat: 1 1; transparent:true"
+               dynamic-body shadow>
+        </a-box>
+        
         
      <a-entity id="texto" position="8.5 5 -2.5"  text="value: Hello World;"></a-entity>
         <a-sphere  
@@ -87,6 +94,7 @@
         
         <a-text mixin="text"  rotation="0 310 0" font="kelsonsans" position="8.9 4.65 -0.94" width="8" wrap-count="10"></a-text> 
         <a-text id="score" rotation="0 310 0" text="value: 1;" font="kelsonsans" position="9.8 7.34 -1" width="60"></a-text> 
+        <a-text id="timer" rotation="0 50 0" text="value: 30'';" font="kelsonsans" position="-9.8 7.34 -1" width="60" color="green"></a-text> 
         
         <a-entity id="throw0"
                   class="throw"
@@ -223,6 +231,7 @@
   </body>
   <script>
     var currThrow = 0;
+    var time = 30
     setTimeout(function(){
         window.addEventListener('mouseup', function () {
             
@@ -236,12 +245,36 @@
         
         document.getElementById("tutorial").setAttribute("visible",false);
         
-        setInterval(function(){
+        var enemiestimer = setInterval(function(){
             var enemies = document.getElementsByClassName("enemy");
             for (var i = 0; i < enemies.length; i++) {
                 enemies.item(i).body.velocity.set(0, 0, 2);;
             }    
         },1000) 
+        
+        //tempo de jogo
+        setInterval(function(){
+            time = time -1;
+            if(time < 0){
+                clearInterval(enemiestimer);
+                var enemies = document.getElementsByClassName("enemy");
+                for (var i = 0; i < enemies.length; i++) {
+                    enemies.item(i).body.velocity.set(0, 0, 0);;
+                }  
+                document.getElementById("timer").setAttribute("text", "value: Fim de jogo.");
+                document.getElementById("vemk").body.position.set(0, 15, -10);
+
+        
+            } else {
+                document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
+                if(time <= 10){
+                    document.getElementById("timer").setAttribute("color", "red");  
+                } else if(time <= 20){
+                    document.getElementById("timer").setAttribute("color", "yellow");  
+                }
+            }
+        },1000)
+        
     }, 6000)
       
       
