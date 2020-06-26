@@ -42,6 +42,7 @@
           <img id="b" src="img/b.png" crossorigin="anonymous" /> 
           <img id="cerca" src="img/cerca.png" crossorigin="anonymous" /> 
           <img id="vemkimg" src="img/vemk.png" crossorigin="anonymous" /> 
+           <img id="estrela" src="img/estrelas.jpg" crossorigin="anonymous" /> 
           
           
           <img id="aecio" src="img/people/aecio.png" crossorigin="anonymous" />
@@ -149,7 +150,8 @@
         <!-- Physics terrain -->
         <a-box id="terrain" width="75" height="0.1" depth="150" position="0 0 0" static-body visible="false"></a-box>
         <!-- parede -->    
-        <a-box id="wall" width="20" height="2" depth="1" position="1 1.5 11.5" material="color: red; opacity: 0.5" static-body></a-box>
+        <a-box id="wall" width="20" material="src: #estrela; repeat: 5 1; transparent:true"
+               height="2" depth="1" position="1 1.5 11.5" material="color: blue; opacity: 1" static-body></a-box>
         
         <a-box width="20" 
                material="src: #cerca; repeat: 10 1; opacity: 0.9"
