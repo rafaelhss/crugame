@@ -114,11 +114,11 @@
                shadow
                   visible="false">
         </a-sphere>
-        <a-entity  class="finish" id="twitter" material="src: #twitter; repeat: 1 1" scale="3 3 3" visible="false" shadow
+        <a-entity  class="finish" id="twitter" material="src: #twitter; repeat: 1 1" scale="0 0 0" visible="false" shadow
                   cursor-listener geometry="primitive: box" material="color: blue" position="-2.8 2.5 -9.5"></a-entity>
-        <a-entity  class="finish" id="vemk" cursor-listener material="src: #whats; repeat: 1 1" scale="3 3 3" visible="false" shadow
+        <a-entity  class="finish" id="vemk" cursor-listener material="src: #whats; repeat: 1 1" scale="0 0 0" visible="false" shadow
                   geometry="primitive: box" material="color: green" position="-5.9 2.5 -5.4"></a-entity>
-        <a-entity  class="finish" id="reload" cursor-listener material="src: #reload; repeat: 1 1" scale="3 3 3" visible="false" shadow geometry="primitive: box" material="color: gray" position="-9.2 2.5 -1.6"></a-entity>
+        <a-entity  class="finish" id="reload" cursor-listener material="src: #reload; repeat: 1 1" scale="0 0 0" visible="false" shadow geometry="primitive: box" material="color: gray" position="-9.2 2.5 -1.6"></a-entity>
 
         
         <a-sphere  
@@ -279,6 +279,8 @@
     var currThrow = 0;
     var time = 30
     
+ 
+    
     document.querySelector('a-scene').addEventListener('loaded', function () {
         console.log("loaded")
         setTimeout(function(){
@@ -315,6 +317,7 @@
                     var finish = document.getElementsByClassName("finish");
                     for (var i = 0; i < finish.length; i++) {
                         finish.item(i).setAttribute("visible",true);
+                        finish.item(i).setAttribute("scale", "3 3 3");
                     }  
 
                     clearInterval(tempointerval);
