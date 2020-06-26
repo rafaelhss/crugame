@@ -11,6 +11,27 @@
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/ad57b15d/dist/aframe-environment-component.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
+      
+      
+      <script>
+        var score = 1; 
+        AFRAME.registerComponent('cursor-listener', {
+            init: function () {
+                 this.el.addEventListener('mouseup', function (evt) {
+                console.log(evt);
+                     if(evt.target.id == "whats") {
+                        window.location.href = "whatsapp://send?text=Usei a tradicao do cuguloso para deixar ele apenas " + score + " anos na serie B. Tente tambem: http://crugame.herokuapp.com";   
+                     }
+                     if(evt.target.id == "twitter") {
+                        window.location.href = "http://twitter.com/share?text=Usei a tradicao do cuguloso para deixar ele apenas " + score + " anos na serie B. Tente tambem: &url=http://crugame.herokuapp.com";    
+                     }
+                     if(evt.target.id == "reload") {
+                        window.location.reload();    
+                     }
+              });
+            }
+          });
+</script>
   </head>
   <body>
     <a-scene physics>
@@ -46,7 +67,10 @@
           <img id="b" src="img/b.png" crossorigin="anonymous" /> 
           <img id="cerca" src="img/cerca.png" crossorigin="anonymous" /> 
           <img id="vemkimg" src="img/vemk.png" crossorigin="anonymous" /> 
-           <img id="estrela" src="img/estrelas.jpg" crossorigin="anonymous" /> 
+          <img id="estrela" src="img/estrelas.jpg" crossorigin="anonymous" /> 
+          <img id="whats" src="img/whats.png" crossorigin="anonymous" /> 
+          <img id="twitter" src="img/twitter.png" crossorigin="anonymous" /> 
+          <img id="reload" src="img/reload.png" crossorigin="anonymous" /> 
           
           
           <img id="aecio" src="img/people/aecio.png" crossorigin="anonymous" />
@@ -69,29 +93,33 @@
       </a-assets>
         
     
-      <a-entity id="cam" camera="userHeight: 1.6" look-controls wasd-controls position="0 0 10">
-        
-            <a-entity cursor
-                  position="0 0 -0.5"
-                   
-                  geometry="primitive: circle; radius: 0.01; segments: 4;"
-                  material="color: #FF4444; shader: flat"></a-entity>
-      </a-entity>
+        <a-entity id="cam" camera="userHeight: 1.6" look-controls wasd-controls position="0 0 10">
+            <a-entity cursor="fuse: true; fuseTimeout: 500"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                material="color: black; shader: flat">
+            </a-entity>
+        </a-entity>
         
       <a-entity id="env1" environment="preset:forest; shadow:true; seed:19; lightPosition: 0.7 0.7 0.7"></a-entity>
       
         
-        <a-text mixin="tutorial" id="tutorial" rotation="0 20 0" font="kelsonsans" position="0 2 5" width="8" wrap-count="20"></a-text> 
+        <a-text mixin="tutorial"  color="blue" id="tutorial" rotation="0 20 0" font="kelsonsans" position="0 2 5" width="8" wrap-count="20"></a-text> 
         
-        <a-sphere id="vemk" scale="2 2 2" position="2 3 2"
+        <a-sphere class="finish" id="whats" scale="2 2 2" position="2 3 2"
                   rotation="0 250 0"
                material="src: #vemkimg; repeat: 1 1; transparent:true"
                shadow
                   visible="false">
         </a-sphere>
+        <a-entity  class="finish" id="twitter" material="src: #twitter; repeat: 1 1" scale="3 3 3" visible="false" shadow
+                  cursor-listener geometry="primitive: box" material="color: blue" position="-2.8 3.5 -9.5"></a-entity>
+        <a-entity  class="finish" id="vemk" cursor-listener material="src: #whats; repeat: 1 1" scale="3 3 3" visible="false" shadow
+                  geometry="primitive: box" material="color: green" position="-5.9 3.5 -5.4"></a-entity>
+        <a-entity  class="finish" id="reload" cursor-listener material="src: #reload; repeat: 1 1" scale="3 3 3" visible="false" shadow
+                  geometry="primitive: box" material="color: gray" position="-9.2 3.5 -1.6"></a-entity>
+
         
-        
-     <a-entity id="texto" position="8.5 5 -2.5"  text="value: Hello World;"></a-entity>
         <a-sphere  
                 obj-model="obj: #ghost-obj;" 
                   id="ghost"
@@ -100,7 +128,7 @@
      <a-box id="terrainscore"  width="8" height="0.1" depth="8" position="8.5 5 -2.5" static-body visible="false"></a-box>
         
         <a-text mixin="text"  rotation="0 310 0" font="kelsonsans" position="8.9 4.65 -0.94" width="8" wrap-count="10"></a-text> 
-        <a-text id="score" rotation="0 310 0" text="value: 1;" font="kelsonsans" position="9.8 7.34 -1" width="60"></a-text> 
+        <a-text id="score" color="blue" rotation="0 310 0" text="value: 1;" font="kelsonsans" position="9.8 7.34 -1" width="60"></a-text> 
         <a-text id="timer" rotation="0 50 0" text="value: 30'';" font="kelsonsans" position="-9.8 7.34 -1" width="60" color="green"></a-text> 
         
         <a-entity id="throw0"
@@ -169,55 +197,55 @@
 
         
         
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 1 8.2" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 1 8" 
                material="src: #itair; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 1.2 5" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 1.2 5.05" 
                material="src: #fe; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 2 1" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 2 1.9" 
                material="src: #serginho; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
      
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 2 -2.5" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 2 -1.15" 
                material="src: #ceni; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 1 -5.8" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 1 -4.20" 
                material="src: #alberto; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="8.5 1 -9" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="8.5 1 -7.25" 
                material="src: #aecio; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
     
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 8.2" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 8" 
                material="src: #wagner; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 5" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 5.05" 
                material="src: #bola; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 1" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 1.9" 
                material="src: #perrella; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
      
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 -2.5" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 -1.15" 
                material="src: #tiago; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 -5.8" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 -4.20" 
                material="src: #choro; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>        
-        <a-box class="people" height="3" depth="3" width="0.1" 
-               position="-8.5 0.7 -9" 
+        <a-box class="people" height="3" depth="3" width="1" 
+               position="-8.5 0.7 -7.25" 
                material="src: #gordo; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>  
         
@@ -232,7 +260,7 @@
       <a-sphere class="enemy" position="0 0.5 -30" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="-5 0.5 -33" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="-3 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="2 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      = 1<a-sphere class="enemy" position="2 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="2 0.5 -12" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="1 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
   
@@ -282,7 +310,11 @@
                         enemies.item(i).body.velocity.set(0, 0, 0);;
                     }  
                     document.getElementById("timer").setAttribute("text", "value: Fim de jogo.");
-                    document.getElementById("vemk").setAttribute("visible",true);
+                   
+                    var finish = document.getElementsByClassName("finish");
+                    for (var i = 0; i < finish.length; i++) {
+                        finish.item(i).setAttribute("visible",true);
+                    }  
 
                     clearInterval(tempointerval);
 
@@ -311,11 +343,10 @@
     function jumpPeople(qtd){
         var people = document.getElementsByClassName("people");
         for (var i = 0; i < qtd; i++) {
-           people.item(Math.floor(Math.random() * people.length)).body.velocity.set(0, 1, 0);;
+           people.item(Math.floor(Math.random() * people.length)).body.velocity.set(0, 1.3, 0);;
         }
     }  
     function dothrow(item){
-        console.log("dotwrow: " + item)
         
         var x = document.getElementById("cam").getAttribute("position").x;  
         var y = document.getElementById("cam").getAttribute("position").y;
@@ -336,7 +367,7 @@
         
         
         document.querySelector(item).body.velocity.set(-velocityX, 0, -velocityY);
-        console.log(document.querySelector(item).body.velocity)
+    
         
         
         var throwitens = document.getElementsByClassName("throw");
@@ -350,9 +381,8 @@
       
       
     var playerEl = document.getElementById("wall")
-    var score = 1;
+
     playerEl.addEventListener('collide', function (e) {
-      console.log('Player has collided with body #' + e.detail.body.id);
         
         if(e.detail.body.el.className.indexOf("enemy") >=0){
             score = score + 1;
@@ -362,7 +392,6 @@
         }
         
         
-        console.log(e.detail.body.el)
       e.detail.target.el;  // Original entity (playerEl).
       e.detail.body.el;    // Other entity, which playerEl touched.
       e.detail.contact;    // Stats about the collision (CANNON.ContactEquation).
