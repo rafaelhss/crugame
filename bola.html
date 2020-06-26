@@ -23,7 +23,9 @@
         <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
         <audio id="sfx-copabr" src="sound/copabr.ogg" crossorigin="anonymous" preload="true" ></audio>
         <audio id="sfx-rosca" src="sound/rosca.ogg" crossorigin="anonymous" preload="true" ></audio>
-        <audio id="sfx-falazeze" src="sound/falazeze.mpeg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-fala" src="sound/falazeze.ogg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-cagao" src="sound/cagao.ogg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-serieb" src="sound/serieb.ogg" crossorigin="anonymous" preload="true" ></audio>
         
           
           <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
@@ -110,7 +112,7 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20"
-                  sound="src: #sfx-faazeze; autoplay: false;"
+                  sound="src: #sfx-fala; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #timegrandesrc; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
@@ -119,7 +121,7 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
-                  sound="src: #sfx-rosca; autoplay: false;"
+                  sound="src: #sfx-cagao; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #six; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
@@ -128,7 +130,7 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
-                  sound="src: #sfx-copabr; autoplay: false;"
+                  sound="src: #sfx-serieb; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #fabio; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>        
@@ -220,18 +222,22 @@
     </a-scene>
   </body>
   <script>
-    
+    var currThrow = 0;
     setTimeout(function(){
         window.addEventListener('mouseup', function () {
-            var itenN = Math.floor(Math.random() * 5);
-            dothrow("#throw" + itenN);
+            
+            dothrow("#throw" + currThrow);
+            currThrow = currThrow + 1;
+            if(currThrow > 4){
+                currThrow=0
+            }
             jumpPeople(3);
         });
         
         document.getElementById("tutorial").setAttribute("visible",false);
         
         setInterval(function(){
-            var enemies = document.getElementsByClassName("throw");
+            var enemies = document.getElementsByClassName("enemy");
             for (var i = 0; i < enemies.length; i++) {
                 enemies.item(i).body.velocity.set(0, 0, 2);;
             }    
