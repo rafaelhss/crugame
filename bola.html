@@ -34,7 +34,9 @@
 </script>
   </head>
   <body>
+    
     <a-scene physics>
+      carregando...
       <a-assets>      
         <a-asset-item id="gun-obj" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-model.obj?1510641419352"></a-asset-item>
         <a-asset-item id="gun-mtl" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-materials.mtl?1510641419027"></a-asset-item>
@@ -113,11 +115,10 @@
                   visible="false">
         </a-sphere>
         <a-entity  class="finish" id="twitter" material="src: #twitter; repeat: 1 1" scale="3 3 3" visible="false" shadow
-                  cursor-listener geometry="primitive: box" material="color: blue" position="-2.8 3.5 -9.5"></a-entity>
+                  cursor-listener geometry="primitive: box" material="color: blue" position="-2.8 2.5 -9.5"></a-entity>
         <a-entity  class="finish" id="vemk" cursor-listener material="src: #whats; repeat: 1 1" scale="3 3 3" visible="false" shadow
-                  geometry="primitive: box" material="color: green" position="-5.9 3.5 -5.4"></a-entity>
-        <a-entity  class="finish" id="reload" cursor-listener material="src: #reload; repeat: 1 1" scale="3 3 3" visible="false" shadow
-                  geometry="primitive: box" material="color: gray" position="-9.2 3.5 -1.6"></a-entity>
+                  geometry="primitive: box" material="color: green" position="-5.9 2.5 -5.4"></a-entity>
+        <a-entity  class="finish" id="reload" cursor-listener material="src: #reload; repeat: 1 1" scale="3 3 3" visible="false" shadow geometry="primitive: box" material="color: gray" position="-9.2 2.5 -1.6"></a-entity>
 
         
         <a-sphere  
@@ -260,7 +261,7 @@
       <a-sphere class="enemy" position="0 0.5 -30" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="-5 0.5 -33" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="-3 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      = 1<a-sphere class="enemy" position="2 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="2 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="2 0.5 -12" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
       <a-sphere class="enemy" position="1 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
   
