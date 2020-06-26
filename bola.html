@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>codevember </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/ad57b15d/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <a-scene physics>
+      <a-assets>      
+        <a-asset-item id="gun-obj" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-model.obj?1510641419352"></a-asset-item>
+        <a-asset-item id="gun-mtl" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-materials.mtl?1510641419027"></a-asset-item>
+       
+        <a-asset-item id="trophy1-obj" src="models/trophy1/Cup.obj"></a-asset-item>
+        <!-- <a-asset-item id="trophy1-mtl" src="models/trophy1/Cup.mtl"></a-asset-item>    -->
+        <a-asset-item id="trophy2-obj" src="models/trophy2/Pokal.obj"></a-asset-item>
+            
+          
+        <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
+        <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
+        <img id="orangebump" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Forangebump1.jpg?1510639083481" crossorigin="anonymous" /> 
+          
+          
+          <img id="throwsrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
+          
+          <img id="timegrandesrc" src="img/timegrande.jpg" crossorigin="anonymous" /> 
+          <img id="brasileirao" src="img/brasileirao.png" crossorigin="anonymous" /> 
+          <img id="copabr" src="img/copabr.jpg" crossorigin="anonymous" /> 
+          <img id="six" src="img/six.png" crossorigin="anonymous" /> 
+          <img id="fabio" src="img/fabio.png" crossorigin="anonymous" /> 
+          <img id="b" src="img/b.png" crossorigin="anonymous" /> 
+                  
+      </a-assets>
+        
+    
+      <a-entity id="cam" camera="userHeight: 1.6" look-controls wasd-controls position="0 0 10">
+        <a-entity cursor
+                  position="0 0 -0.5"
+                  geometry="primitive: circle; radius: 0.01; segments: 4;"
+                  material="color: #FF4444; shader: flat"></a-entity>
+      </a-entity>
+        
+      <!--  
+      <a-entity id="env1" environment="preset:arches; shadow:true; seed:19; lightPosition: 0.7 0.7 0.7"></a-entity>
+      -->
+        
+        <a-entity id="throw0" 
+                  dynamic-body 
+                  velocity="0 0 -20" 
+                  sound="src: #sfx-gun; autoplay: false;" 
+                  obj-model="obj: #trophy1-obj;" 
+                  position="0 2 -1" 
+                  shadow rotation="0 90 0"
+                  scale="0.3 0.5 0.3"
+                  material="src: #copabr; repeat: 50 10"></a-entity>   
+        <a-entity id="throw1" 
+                  dynamic-body 
+                  velocity="0 0 -20" 
+                  sound="src: #sfx-gun; autoplay: false;" 
+                  obj-model="obj: #trophy2-obj;" 
+                  position="0 2 -1" 
+                  shadow rotation="0 90 0"
+                  material="src: #brasileirao; repeat: 5 5"></a-entity>           
+        <a-entity id="throw2" 
+                  dynamic-body 
+                  position="0 2 -1" 
+                  velocity="0 0 -20" 
+                  geometry="primitive: box; radius: 0.5" 
+                  material="src: #timegrandesrc; repeat: 1 1" 
+                  shadow="cast:true;receive:true"></a-entity>
+        <a-entity id="throw3" 
+                  dynamic-body 
+                  position="0 2 -1" 
+                  velocity="0 0 -20" 
+                  geometry="primitive: box; radius: 0.5" 
+                  material="src: #six; repeat: 1 1" 
+                  shadow="cast:true;receive:true"></a-entity>
+        <a-entity id="throw4" 
+                  dynamic-body 
+                  position="0 2 -1" 
+                  velocity="0 0 -20" 
+                  geometry="primitive: box; radius: 0.5" 
+                  material="src: #fabio; repeat: 1 1" 
+                  shadow="cast:true;receive:true"></a-entity>        
+        
+    
+        
+     
+         <!-- Physics terrain -->
+      <a-box id="terrain" width="75" height="0.1" depth="75" position="0 0 0" static-body visible="true"></a-box>
+     <!-- parede -->    
+      <a-box width="20" height="3" depth="1" position="1 1.5 11.5" material="color: red; opacity: 0.5" static-body></a-box>
+      <a-box width="100" height="3" depth="1" position="-8.5 1.5 2" rotation="0 270 0" material="color: red; opacity: 0.5" static-body></a-box>
+      <a-box width="100" height="3" depth="1" position="11.5 1.5 2" rotation="0 270 0" material="color: red; opacity: 0.5" static-body></a-box>
+        
+        
+        
+        <!-- Blocks row 1 -->
+      
+      <a-sphere class="enemy" position="0 0.5 -4" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="1 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="2 0.5 -12" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="3 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -25" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -30" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -33" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -38" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -40" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 0.5 -40" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+
+    </a-scene>
+  </body>
+  <script>
+    
+    setInterval(function(){
+  //    document.querySelector("#test").body.velocity.set(0, 0, 2);
+        var enemies = document.getElementsByClassName("enemy");
+        for (var i = 0; i < enemies.length; i++) {
+           enemies.item(i).body.velocity.set(0, 0, 2);;
+        }    
+    },1000)  
+      
+      
+    function DegreesToRadians(valDeg){
+        return ((2*Math.PI)/360*valDeg)
+    }
+      
+    function dothrow(item){
+        console.log("dotwrow: " + item)
+        
+        var x = document.getElementById("cam").getAttribute("position").x;  
+        var y = document.getElementById("cam").getAttribute("position").y;
+        var z = document.getElementById("cam").getAttribute("position").z;
+        document.querySelector(item).body.position.set(x, y, z);
+
+         
+        var angle = (document.getElementById("cam").getAttribute("rotation").y);
+        var up = (document.getElementById("cam").getAttribute("rotation").x);
+        
+        var hip = 20;
+        var velocityX = 10;
+        var velocityY = 10;
+        
+        velocityX = hip * Math.sin(DegreesToRadians(angle))
+		velocityY = hip * Math.cos(DegreesToRadians(angle))
+        
+        
+        
+        document.querySelector(item).body.velocity.set(-velocityX, 0, -velocityY);
+        console.log(document.querySelector(item).body.velocity)
+        
+        //document.querySelector("#throw5").components.sound.playSound();
+    }  
+      
+    window.addEventListener('click', function () {
+      // METHOD1 - ADD A NEW ORANGE TO SCENE - not working
+      // const orange =
+      // `<a-entity class="orange" dynamic-body velocity="0 0 -10" geometry="primitive: sphere; radius: 0.1" position="0 2 -2" material="src: #orangesrc; roughness: 0.48; color: #edaa45;" shadow="cast:true;receive:true"></a-entity>`
+      // var el = document.createElement('a-entity');
+      // AFRAME.scenes[0].appendChild(el);
+      // el.innerHTML = orange;
+      // el.setAttribute('dynamic-body');
+
+        var itenN = Math.floor(Math.random() * 5);
+        dothrow("#throw" + itenN);
+        
+    });    
+  </script>
+</html>
