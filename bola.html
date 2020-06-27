@@ -139,6 +139,11 @@
       
   </head>
   <body>
+    <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
+<!--    <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
+        <span>Play/Pause</span>
+    </button>
+-->
   <div class="tutorial modal">
       <div id="text">
           <div><span>#<span class="bora">BORA</span>RECONSTRUIR</span></div>
@@ -417,6 +422,33 @@
     var time = 30
     var score = 1; 
     
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    // load some sound
+    const audioElement = document.querySelector('audio');
+    const track = audioCtx.createMediaElementSource(audioElement);
+
+    const playButton = document.querySelector('.tape-controls-play');
+    const gainNode = audioCtx.createGain();
+    const pannerOptions = {pan: 0};
+    const panner = new StereoPannerNode(audioCtx, pannerOptions);
+    track.connect(gainNode).connect(panner).connect(audioCtx.destination); 
+      
+      // play pause audio
+window.addEventListener('click', function() {
+	
+	// check if context is in suspended state (autoplay policy)
+	if (audioCtx.state === 'suspended') {
+		audioCtx.resume();
+	}
+	
+	
+		audioElement.play();
+	
+	
+}, false);
       
     function showTuto(){
        
@@ -448,6 +480,9 @@
                 
                 document.querySelector('.modal').classList.remove("show")
                 document.querySelector('.modal').classList.add("hide")
+                
+                
+                
             });
 
             //document.getElementById("tutorial").setAttribute("visible",false);
