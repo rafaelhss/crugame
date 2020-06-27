@@ -64,8 +64,9 @@
     .modal {
         position: absolute;
 
-        left: 30%;
+        left: 10%;
 
+        min-width: min-content;
         width: 40%;
         height: min-content;
 
@@ -84,10 +85,9 @@
         text-align: center;
     }
     .modal.show {
-    right: 10px;
-    top: 10px;
-
-    opacity: 1;
+        right: 10px;
+        top: 10px;
+        opacity: 1;
     }
     .tutorial .clicktxt{
         font-size: 50%;
@@ -110,19 +110,16 @@
         align-items: center;
     }
     .botao {
-      text-decoration: none;
-      color: #eee;
-      display: inline-block;
-      font-weight: bold;
-      padding: 1rem 2rem;
+        text-decoration: none;
+        color: #eee;
+        display: inline-block;
+        font-weight: bold;
+        padding: 1rem 2rem;
         margin: 5px;
-      border-radius: 3px;
-        
+        border-radius: 3px;
+
         font-size: 50%;
         box-shadow: inset 0 0 1em #777777, 0 0 1em #777777;
-        
-      
-        
     }
 
     .gameover #reloadbtn{
