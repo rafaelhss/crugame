@@ -1,28 +1,78 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-    </head>
-   <script>
-AFRAME.registerComponent('cursor-listener', {
-    init: function () {
-         this.el.addEventListener('mouseup', function (evt) {
-        console.log('I was clicked at: ', evt.detail.intersection.point);
-      });
+  <head>
+    <title>A-Frame Event to HTML - A-Frame</title>
+    <meta name="description" content="A-Frame Event to HTML - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script>
+    AFRAME.registerComponent('a-frame-to-html', {
+      init: function () {
+        let box = document.querySelector('#box')
+        let modal = document.querySelector('.modal')
+
+        box.addEventListener('click', (e) => {
+          modal.classList.remove("hide")
+          modal.classList.add("show")
+            
+        })
+       document.querySelector('#sphere').addEventListener('click', (e) => {
+           modal.classList.remove("show")
+          modal.classList.add("hide")
+        })
+      }
+    });
+            
+    function startGame(){
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@")
+        modal.classList.remove("show")
+        modal.classList.add("hide")
+        console.log(document.getElementById("pop"));
     }
-  });
-</script>
-<body>
+    </script>
+    <style type="text/css">
+      .modal {
+        position: fixed;
 
-    <a-scene>
-        <a-entity camera look-controls>
-            <a-entity cursor="fuse: true; fuseTimeout: 500"
-                    position="0 0 -1"
-                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                    material="color: black; shader: flat">
-            </a-entity>
-        </a-entity>
-        <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue" position="-2 2.2 -1.5"></a-entity>
+        right: -999px;
+        top: -999px;
 
+        width: 400px;
+        height: 400px;
+
+        z-index: 999;
+        
+        background: #336699;
+        opacity: 0;
+        
+        transition: opacity 1s ease;
+      }
+      .modal.show {
+        right: 10px;
+        top: 10px;
+        
+        opacity: 1;
+      }
+        
+      .modal.hide {
+        right: 10px;
+        top: 10px;
+        
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modal">
+      <!-- Modal content can go here... -->
+        <a title="Click para comecar" href="#" onclick="startGame();return false;">#borareconstruir ajude o cabuloso! Afaste anos de serie B usando toda a tradicao azul!</a>    
+    </div>
+    <a-scene a-frame-to-html>
+      <a-entity camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity>
+      <a-box id="box" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+      <a-sphere id="sphere" position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
     </a-scene>
-    </body>
+  </body>
 </html>
