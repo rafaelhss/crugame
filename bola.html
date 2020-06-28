@@ -74,6 +74,7 @@
 
         background: #336699;
         opacity: 0;
+        visibility: hidden;
         transition: left 3s ease;
         border-radius: 3%; 
         box-shadow: inset 0 0 2em #777777, 0 0 2em #777777;
@@ -86,7 +87,7 @@
     }
     .modal.show {
         left: 5%;
-
+        visibility: visible;
         opacity: 1;
     }
     .tutorial .clicktxt{
@@ -141,16 +142,21 @@
   <body>
     <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
  
+  <div class="loading modal show">
+    <div id="text">
+      <div><span>#<span class="bora">BORA</span>RECONSTRUIR</span></div>
+        <div><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
+    </div>
+  </div>
   <div class="tutorial modal">
       <div id="text">
           <div><span>#<span class="bora">BORA</span>RECONSTRUIR</span></div>
           <div>Ajude a afastar anos de serie <span id="txtb">B</span> usando as glorias do cabuloso.</div>
-          <div class="clicktxt">clique na tela para atirar</div>
-          <div class="clicktxt">mova a tela para mirar</div>
-          <div id="reloadbtn" class="botao">
+          <div>
             <a onclick="playsound()" >
-              <i class="fa fa-whatsapp"></i>
-              <span>#<span class="bora">BORA</span>SOUND-ON</span>
+              <div class="clicktxt">clique na tela para atirar</div>
+              <div class="clicktxt">mova a tela para mirar</div>
             </a>
           </div>
       </div>
@@ -181,13 +187,10 @@
                     </a>
                   </div>
               </div>
-              
-              
           </div>
       </div>
-  </div>
+  </div>        
    <a-scene physics id="cena">
-      carregando...
       <a-assets>      
         <a-asset-item id="gun-obj" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-model.obj?1510641419352"></a-asset-item>
         <a-asset-item id="gun-mtl" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-materials.mtl?1510641419027"></a-asset-item>
@@ -451,12 +454,15 @@
         time = 30
         score = 1; 
         
+        document.querySelector('.loading').classList.remove("show") 
         document.querySelector('.tutorial').classList.remove("show") 
         document.querySelector('.gameover').classList.remove("show") 
         document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
         document.getElementById("timer").setAttribute("color", "green");  
         document.getElementById("score").setAttribute("text", "value: "+score+";");
         document.getElementById("ghost").body.position.set(8.5, 15, -2.5);
+        document.getElementById("ghost").setAttribute("rotation","0, 310, 0");
+        
             
                 
         toggleFinish(true);
@@ -468,8 +474,7 @@
             var x = Math.floor(Math.random() * 10)-5;
             var y = 5;
             var z = - 8 - i
-            enemies.item(i).body.position.set(x, y, z);;
-            console.log(enemies.item(i).body.position)
+            enemies.item(i).body.position.set(x, y, z);
         }
         
         
@@ -556,6 +561,7 @@
     
     document.querySelector('a-scene').addEventListener('loaded', function () {
         console.log("loaded")
+        document.querySelector('.loading').classList.remove("show") 
         showTuto();
         setTimeout(function(){
             window.addEventListener('mouseup', function () {
