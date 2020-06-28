@@ -64,7 +64,7 @@
     .modal {
         position: absolute;
 
-        left: 10%;
+        left: 110%;
 
         min-width: min-content;
         width: 40%;
@@ -74,7 +74,7 @@
 
         background: #336699;
         opacity: 0;
-        transition: opacity 3s ease;
+        transition: left 3s ease;
         border-radius: 3%; 
         box-shadow: inset 0 0 2em #777777, 0 0 2em #777777;
         color: white;
@@ -85,8 +85,8 @@
         text-align: center;
     }
     .modal.show {
-        right: 10px;
-        top: 10px;
+        left: 10%;
+
         opacity: 1;
     }
     .tutorial .clicktxt{
@@ -139,8 +139,8 @@
       
   </head>
   <body>
-    <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
-<!--    <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
+<!--    <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
+    <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
         <span>Play/Pause</span>
     </button>
 -->
@@ -188,12 +188,10 @@
       <a-assets>      
         <a-asset-item id="gun-obj" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-model.obj?1510641419352"></a-asset-item>
         <a-asset-item id="gun-mtl" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-materials.mtl?1510641419027"></a-asset-item>
-       
         <a-asset-item id="trophy1-obj" src="models/trophy1/Cup.obj"></a-asset-item>
-        <!-- <a-asset-item id="trophy1-mtl" src="models/trophy1/Cup.mtl"></a-asset-item>    -->
         <a-asset-item id="trophy2-obj" src="models/trophy2/Pokal.obj"></a-asset-item>
         <a-asset-item id="ghost-obj" src="models/ghost/3d-model.obj"></a-asset-item>
-            
+         
           
         <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
         <audio id="sfx-copabr" src="sound/copabr.ogg" crossorigin="anonymous" preload="true" ></audio>
@@ -423,7 +421,8 @@
     var score = 1; 
     
 
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
+   /*
+   const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioCtx = new AudioContext();
 
     // load some sound
@@ -437,6 +436,7 @@
     track.connect(gainNode).connect(panner).connect(audioCtx.destination); 
       
       // play pause audio
+     
 window.addEventListener('click', function() {
 	
 	// check if context is in suspended state (autoplay policy)
@@ -448,7 +448,7 @@ window.addEventListener('click', function() {
 		audioElement.play();
 	
 	
-}, false);
+}, false);*/
       
     function showTuto(){
        
@@ -478,11 +478,7 @@ window.addEventListener('click', function() {
                 }
                 jumpPeople(3);
                 
-                document.querySelector('.modal').classList.remove("show")
-                document.querySelector('.modal').classList.add("hide")
-                
-                
-                
+                document.querySelector('.modal').classList.remove("show") 
             });
 
             //document.getElementById("tutorial").setAttribute("visible",false);
