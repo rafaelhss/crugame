@@ -37,8 +37,23 @@
 <style type="text/css">
     body{
         font-family: "Comic Sans MS", sans-serif;
+        
     }
-
+    .overlay {
+        position: absolute;
+        background: #FF0000;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        left: 110%;
+        transition: opacity 0.1s ease;
+        
+    }
+    .overlay.show {
+        left: 0%;
+        opacity: .2;
+    }
                 /* unvisited link */
     a:link {
         color: white;
@@ -142,6 +157,7 @@
   <body>
     <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
  
+  <div class="overlay"></div>
   <div class="loading modal show">
     <div id="text">
       <div><span>#<span class="bora">BORA</span>RECONSTRUIR</span></div>
@@ -426,6 +442,7 @@
  
     </a-scene>
 
+      
   </body>
   <script>
     var currThrow = 0;
@@ -449,6 +466,9 @@
     }
       
     function startGame(){
+        
+        
+         
         
         currThrow = 0;
         time = 30
@@ -578,7 +598,7 @@
 
             startGame();
 
-        }, 5000)
+        }, 500)
     })
       
       
@@ -638,7 +658,11 @@
             score = score + 1;
             document.getElementById("score").setAttribute("text", "value: "+score+";");
             e.detail.body.el.body.position.set(Math.floor(Math.random() * 10)-5, 0, -10);
-            document.getElementById("ghost").body.velocity.set(0, 5, 0);       
+            document.getElementById("ghost").body.velocity.set(0, 5, 0);    
+            document.querySelector('.overlay').classList.add("show")
+            setTimeout(function(){
+                document.querySelector('.overlay').classList.remove("show")
+            },200)
         }
         
         
