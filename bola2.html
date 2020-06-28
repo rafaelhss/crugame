@@ -13,7 +13,7 @@
 
     <audio src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
     <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
-        <span>Play/Pause</span>
+        <span>Play/2Pause</span>
     </button>
       
     <a-scene>
@@ -29,7 +29,7 @@
         <script>console.clear();
 
 // instigate our audio context
-
+/*
 // for cross browser
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
@@ -66,8 +66,26 @@ const panner = new StereoPannerNode(audioCtx, pannerOptions);
 track.connect(gainNode).connect(panner).connect(audioCtx.destination);
 
 
+*/
+  const playButton = document.querySelector('.tape-controls-play');
 
+// play pause audio
+playButton.addEventListener('click', function() {
+          
+    
+   setInterval(function(){
+        var sounds = ["cagao.ogg", "copabr.ogg", "falazeze.ogg", "rosca.ogg", "serieb.ogg"]
+       
+        
+        
+        var mp3 = document.createElement("audio");
+        mp3.setAttribute('src', 'sound/' + sounds[Math.floor(Math.random()*sounds.length)]);
+        mp3.load();
+        document.documentElement.appendChild(mp3);
+        mp3.play();
+   }, 2000)    
 
+});
 
     </script>
 </html>

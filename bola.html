@@ -3,7 +3,7 @@
   <head>
     <title>Cabuloso game - xo serie B</title>
     <link rel="icon" href="https://www.cruzeiro.com.br/favicon.ico" type="image/x-icon" /> 
-      <meta property="og:image" content="http://crugame.herokuapp.com/img/people/bola.png"/>
+      <meta property="og:image" content="http://crugame.herokuapp.com/img/bola.png"/>
     <meta property="og:title" content="Cabuloso Game"/>
     <meta property="og:description" content="Use a tradicao azul e evite anos e anos de serie B"/>
     <meta charset="UTF-8">
@@ -101,7 +101,7 @@
         text-align: center;
     }
     .modal.show {
-        left: 5%;
+        left: 2%;
         visibility: visible;
         opacity: 1;
     }
@@ -109,7 +109,7 @@
         font-size: 50%;
     }      
     .modal #text{
-        margin: 10%;
+        margin: 5%;
     }
     .modal .bora{
         color: #ffcc00;
@@ -138,7 +138,7 @@
         box-shadow: inset 0 0 1em #777777, 0 0 1em #777777;
     }
 
-    .gameover #reloadbtn{
+    .reloadbtn{
         background-color: #aaaaaa;
     }
     .gameover #whatsbtn{
@@ -170,10 +170,12 @@
           <div><span>#<span class="bora">BORA</span>RECONSTRUIR</span></div>
           <div>Ajude a afastar anos de serie <span id="txtb">B</span> usando as glorias do cabuloso.</div>
           <div>
-            <a onclick="playsound()" >
-              <div class="clicktxt">clique na tela para atirar</div>
-              <div class="clicktxt">mova a tela para mirar</div>
-            </a>
+            <div class="clicktxt">clique na tela para atirar</div>
+            <div class="clicktxt">mova a tela para mirar</div>
+            <div class="botao reloadbtn"><a onclick="init()" >
+                  <span>#<span class="bora">BORA</span>JOGAR</span>
+            </a></div>
+              
           </div>
       </div>
   </div>
@@ -183,7 +185,7 @@
           <div><span>#<span class="bora">GAME</span>OVER</span></div>
           <div>Com sua ajuda, o cabuloso vai ficar <span class="bora" id="scoretxt">10</span> anos na serie <span id="txtb">B</span></div>
           <div>
-              <div id="reloadbtn" class="botao">
+              <div id="reloadbtn" class="botao reloadbtn">
                 <a onclick="startGame()" >
                   <i class="fa fa-whatsapp"></i>
                   <span>#<span class="bora">BORA</span>JOGARNOVAMENTE</span>
@@ -214,20 +216,22 @@
         <a-asset-item id="trophy2-obj" src="models/trophy2/Pokal.obj"></a-asset-item>
         <a-asset-item id="ghost-obj" src="models/ghost/3d-model.obj"></a-asset-item>
          
-          
+       <!--   
         <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
         <audio id="sfx-copabr" src="sound/copabr.ogg" crossorigin="anonymous" preload="true" ></audio>
         <audio id="sfx-rosca" src="sound/rosca.ogg" crossorigin="anonymous" preload="true" ></audio>
         <audio id="sfx-fala" src="sound/falazeze.ogg" crossorigin="anonymous" preload="true" ></audio>
         <audio id="sfx-cagao" src="sound/cagao.ogg" crossorigin="anonymous" preload="true" ></audio>
         <audio id="sfx-serieb" src="sound/serieb.ogg" crossorigin="anonymous" preload="true" ></audio>
-        
+     
           
           <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
         <img id="orangebump" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Forangebump1.jpg?1510639083481" crossorigin="anonymous" /> 
           
           
           <img id="throwsrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
+             -->
+          
           
           <img id="timegrandesrc" src="img/timegrande-min.jpg" crossorigin="anonymous" /> 
           <img id="brasileirao" src="img/brasileirao-min.png" crossorigin="anonymous" /> 
@@ -309,7 +313,6 @@
                   class="throw"
                   dynamic-body 
                   velocity="0 0 20" 
-                  sound="src: #sfx-rosca; autoplay: false;" 
                   obj-model="obj: #trophy2-obj;" 
                   position="0 5 20" 
                   shadow rotation="0 90 0"
@@ -319,7 +322,6 @@
                   class="throw"
                   dynamic-body 
                   velocity="0 0 20" 
-                  sound="src: #sfx-rosca; autoplay: false;" 
                   obj-model="obj: #trophy2-obj;" 
                   position="0 5 20" 
                   shadow rotation="0 90 0"
@@ -330,7 +332,6 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20"
-                  sound="src: #sfx-fala; autoplay: false;"
                   geometry="primitive: box; radius: 0.3" 
                   material="src: #timegrandesrc; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
@@ -339,7 +340,6 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
-                  sound="src: #sfx-cagao; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #six; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>
@@ -348,7 +348,6 @@
                   dynamic-body 
                   position="0 5 20" 
                   velocity="0 0 20" 
-                  sound="src: #sfx-serieb; autoplay: false;"
                   geometry="primitive: box; radius: 0.5" 
                   material="src: #fabio; repeat: 1 1" 
                   shadow="cast:true;receive:true"></a-entity>        
@@ -537,25 +536,30 @@
 
       
       
-   function playsound(){
+   function init(){
         try{
         
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            const audioCtx = new AudioContext();
+            setInterval(function(){
+                var sounds = ["cagao.ogg", "copabr.ogg", "falazeze.ogg", "rosca.ogg", "serieb.ogg"]
+                var mp3 = document.createElement("audio");
+                mp3.setAttribute('src', 'sound/' + sounds[Math.floor(Math.random()*sounds.length)]);
+                mp3.load();
+                document.documentElement.appendChild(mp3);
+                mp3.play();
+           }, 2000); 
 
-            // load some sound
-            const audioElement = document.querySelector('audio');
-            const track = audioCtx.createMediaElementSource(audioElement);
+           window.addEventListener('mouseup', function () {
+                dothrow("#throw" + currThrow);
+                currThrow = currThrow + 1;
+                if(currThrow > 4){
+                    currThrow=0
+                }
+                jumpPeople(3);
+                
+                
+            });
+            startGame();
             
-            track.connect(audioCtx.destination); 
-
-            // check if context is in suspended state (autoplay policy)
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-
-            audioElement.play();
         } catch (err) {
             alert(err);
         }
@@ -583,22 +587,6 @@
         console.log("loaded")
         document.querySelector('.loading').classList.remove("show") 
         showTuto();
-        setTimeout(function(){
-            window.addEventListener('mouseup', function () {
-
-                dothrow("#throw" + currThrow);
-                currThrow = currThrow + 1;
-                if(currThrow > 4){
-                    currThrow=0
-                }
-                jumpPeople(3);
-                
-                
-            });
-
-            startGame();
-
-        }, 500)
     })
       
       
@@ -639,13 +627,14 @@
         document.querySelector(item).body.velocity.set(-velocityX, 0, -velocityY);
     
         
-        
+  /*      
         var throwitens = document.getElementsByClassName("throw");
         for (var i = 0; i < throwitens.length; i++) {
             throwitens.item(i).components.sound.stopSound();
         } 
 
         document.querySelector(item).components.sound.playSound();
+        */
     }  
       
       
