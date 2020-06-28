@@ -268,7 +268,7 @@
                 obj-model="obj: #ghost-obj;" 
                   id="ghost"
                   rotation="0 310 0"
-                 position="8.5 15    -2.5"  dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+                 position="8.5 15 -2.5"  dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
      <a-box id="terrainscore"  width="8" height="0.1" depth="8" position="8.5 5 -2.5" static-body visible="false"></a-box>
         
         <a-text mixin="text"  rotation="0 310 0" font="kelsonsans" position="8.9 4.65 -0.94" width="8" wrap-count="10"></a-text> 
@@ -456,6 +456,7 @@
         document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
         document.getElementById("timer").setAttribute("color", "green");  
         document.getElementById("score").setAttribute("text", "value: "+score+";");
+        document.getElementById("ghost").body.position.set(8.5, 15, -2.5);
             
                 
         toggleFinish(true);
