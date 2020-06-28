@@ -75,9 +75,6 @@ playButton.addEventListener('click', function() {
     
    setInterval(function(){
         var sounds = ["cagao.ogg", "copabr.ogg", "falazeze.ogg", "rosca.ogg", "serieb.ogg"]
-       
-        
-        
         var mp3 = document.createElement("audio");
         mp3.setAttribute('src', 'sound/' + sounds[Math.floor(Math.random()*sounds.length)]);
         mp3.load();
