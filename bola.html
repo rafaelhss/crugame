@@ -162,7 +162,7 @@
           <div>Com sua ajuda, o cabuloso vai ficar <span class="bora" id="scoretxt">10</span> anos na serie <span id="txtb">B</span></div>
           <div>
               <div id="reloadbtn" class="botao">
-                <a onclick="window.location.reload()" >
+                <a onclick="startGame()" >
                   <i class="fa fa-whatsapp"></i>
                   <span>#<span class="bora">BORA</span>JOGARNOVAMENTE</span>
                 </a>
@@ -404,29 +404,23 @@
                material="src: #gordo; repeat: 1 1; transparent:true"
                dynamic-body force-pushable shadow></a-box>  
         
-        <!-- Blocks row 1 -->
       
-      <a-sphere class="enemy" position="-5 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="0 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="5 0.5 -12" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="3 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-  
-      <a-sphere class="enemy" position="5 0.5 -25" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="0 0.5 -30" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="-5 0.5 -33" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="-3 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="2 0.5 -8" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="2 0.5 -12" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="1 0.5 -20" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-  
-      <a-sphere class="enemy" position="3 0.5 -25" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="1 0.5 -30" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-sphere class="enemy" position="-2 0.5 -33" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-    <!--
-        <a-sphere class="enemy" position="-3 0.5 -38" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
-      <a-box class="enemy" position="5 0.5 0" dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-box>
-      -->
-
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      <a-sphere class="enemy" position="0 5 -5"dynamic-body force-pushable shadow material="src: #b; repeat: 1 1"></a-sphere>
+      
+ 
     </a-scene>
 
   </body>
@@ -435,7 +429,88 @@
     var time = 30
     var score = 1; 
     
+      
+    function toggleFinish(hide){
+        var v = true;
+        var s = "3 3 3";
+        if(hide){
+         v = false;
+         s = "0 0 0";      
+        }
+                        //hoje so tem um
+        var finish = document.getElementsByClassName("finish");
+        for (var i = 0; i < finish.length; i++) {
+            finish.item(i).setAttribute("visible",v);
+            finish.item(i).setAttribute("scale", s);
+        }
+    }
+      
+    function startGame(){
+        
+        currThrow = 0;
+        time = 30
+        score = 1; 
+        
+        document.querySelector('.tutorial').classList.remove("show") 
+        document.querySelector('.gameover').classList.remove("show") 
+        document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
+        document.getElementById("timer").setAttribute("color", "green");  
+        document.getElementById("score").setAttribute("text", "value: "+score+";");
+            
+                
+        toggleFinish(true);
+        
+        
+        
+        var enemies = document.getElementsByClassName("enemy");
+        for (var i = 0; i < enemies.length; i++) {
+            var x = Math.floor(Math.random() * 10)-5;
+            var y = 5;
+            var z = - 8 - i
+            enemies.item(i).body.position.set(x, y, z);;
+            console.log(enemies.item(i).body.position)
+        }
+        
+        
+        var enemiestimer = setInterval(function(){
+            var enemies = document.getElementsByClassName("enemy");
+            for (var i = 0; i < enemies.length; i++) {                    
+                enemies.item(i).body.velocity.set(0, 0, 2.5);;
+            }    
+        },1000) 
 
+        //tempo de jogo
+        var tempointerval = setInterval(function(){
+            time = time -1;
+            if(time <= 0){
+                clearInterval(enemiestimer);
+                var enemies = document.getElementsByClassName("enemy");
+                for (var i = 0; i < enemies.length; i++) {
+                    enemies.item(i).body.velocity.set(0, 0, 0);;
+                }  
+                document.getElementById("timer").setAttribute("text", "value: Fim de jogo.");
+                showScore();
+
+
+
+                toggleFinish(false);
+
+                clearInterval(tempointerval);
+
+            } else {
+                document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
+                if(time <= 10){
+                    document.getElementById("timer").setAttribute("color", "red");  
+                } else if(time <= 20){
+                    document.getElementById("timer").setAttribute("color", "yellow");  
+                }
+            }
+        },1000)
+
+    }
+
+      
+      
    function playsound(){
         try{
         
@@ -461,8 +536,10 @@
 
    }
       
+    function hideModal(){
+        
+    }  
     function showTuto(){
-       
         document.querySelector('.tutorial').classList.add("show"); 
     }  
     function showScore(){
@@ -489,49 +566,10 @@
                 }
                 jumpPeople(3);
                 
-                document.querySelector('.modal').classList.remove("show") 
+                
             });
 
-            //document.getElementById("tutorial").setAttribute("visible",false);
-
-            var enemiestimer = setInterval(function(){
-                var enemies = document.getElementsByClassName("enemy");
-                for (var i = 0; i < enemies.length; i++) {                    enemies.item(i).body.velocity.set(0, 0, 2.5);;
-                }    
-            },1000) 
-
-            //tempo de jogo
-            var tempointerval = setInterval(function(){
-                time = time -1;
-                if(time <= 0){
-                    clearInterval(enemiestimer);
-                    var enemies = document.getElementsByClassName("enemy");
-                    for (var i = 0; i < enemies.length; i++) {
-                        enemies.item(i).body.velocity.set(0, 0, 0);;
-                    }  
-                    document.getElementById("timer").setAttribute("text", "value: Fim de jogo.");
-                    showScore();
-       
-                   
-                    
-                    //hoje so tem um
-                    var finish = document.getElementsByClassName("finish");
-                    for (var i = 0; i < finish.length; i++) {
-                        finish.item(i).setAttribute("visible",true);
-                        finish.item(i).setAttribute("scale", "3 3 3");
-                    }  
-
-                    clearInterval(tempointerval);
-
-                } else {
-                    document.getElementById("timer").setAttribute("text", "value: "+time+"'';");  
-                    if(time <= 10){
-                        document.getElementById("timer").setAttribute("color", "red");  
-                    } else if(time <= 20){
-                        document.getElementById("timer").setAttribute("color", "yellow");  
-                    }
-                }
-            },1000)
+            startGame();
 
         }, 5000)
     })
