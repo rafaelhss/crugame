@@ -192,7 +192,7 @@
         <a-asset-item id="gun-obj" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-model.obj?1510641419352"></a-asset-item>
         <a-asset-item id="gun-mtl" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Fgun-1NI7Q2_vScX-materials.mtl?1510641419027"></a-asset-item>
         <a-asset-item id="trophy1-obj" src="models/trophy1/Cup.obj"></a-asset-item>
-        <a-asset-item id="trophy2-obj" src="models/trophy2/Pokal.obj"></a-asset-item>
+        <!--<a-asset-item id="trophy2-obj" src="models/trophy2/Pokal.obj"></a-asset-item>-->
         <a-asset-item id="ghost-obj" src="models/ghost/3d-model.obj"></a-asset-item>
          
           
@@ -210,32 +210,33 @@
           
           <img id="throwsrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
           
-          <img id="timegrandesrc" src="img/timegrande.jpg" crossorigin="anonymous" /> 
-          <img id="brasileirao" src="img/brasileirao.png" crossorigin="anonymous" /> 
-          <img id="copabr" src="img/copabr.jpg" crossorigin="anonymous" /> 
-          <img id="six" src="img/six.png" crossorigin="anonymous" /> 
-          <img id="fabio" src="img/fabio.png" crossorigin="anonymous" /> 
-          <img id="b" src="img/b.png" crossorigin="anonymous" /> 
-          <img id="cerca" src="img/cerca.png" crossorigin="anonymous" /> 
-          <img id="vemkimg" src="img/vemk.png" crossorigin="anonymous" /> 
-          <img id="estrela" src="img/estrelas.jpg" crossorigin="anonymous" /> 
-          <img id="whats" src="img/whats.png" crossorigin="anonymous" /> 
-          <img id="twitter" src="img/twitter.png" crossorigin="anonymous" /> 
-          <img id="reload" src="img/reload.png" crossorigin="anonymous" /> 
+          <img id="timegrandesrc" src="img/timegrande-min.jpg" crossorigin="anonymous" /> 
+          <img id="brasileirao" src="img/brasileirao-min.png" crossorigin="anonymous" /> 
+          <img id="copabr" src="img/copabr-min.jpg" crossorigin="anonymous" /> 
+          <img id="six" src="img/six-min.png" crossorigin="anonymous" /> 
+          <img id="fabio" src="img/fabio-min.png" crossorigin="anonymous" /> 
+          <img id="b" src="img/b-min.png" crossorigin="anonymous" /> 
+          <img id="cerca" src="img/cerca-min.png" crossorigin="anonymous" /> 
+          <img id="vemkimg" src="img/vemk-min.png" crossorigin="anonymous" /> 
+          <img id="estrela" src="img/estrelas-min.jpg" crossorigin="anonymous" /> 
+          <img id="whats" src="img/whats-min.png" crossorigin="anonymous" /> 
+          <img id="twitter" src="img/twitter-min.png" crossorigin="anonymous" /> 
+          <img id="reload" src="img/reload-min.png" crossorigin="anonymous" /> 
           
           
-          <img id="aecio" src="img/people/aecio.png" crossorigin="anonymous" />
-          <img id="alberto" src="img/people/alberto.png" crossorigin="anonymous" />
-          <img id="ceni" src="img/people/ceni.png" crossorigin="anonymous" />
-          <img id="choro" src="img/people/choro.png" crossorigin="anonymous" />
-          <img id="fe" src="img/people/fe.png" crossorigin="anonymous" />
-          <img id="bola" src="img/people/bola.png" crossorigin="anonymous" />
-          <img id="gordo" src="img/people/gordo.png" crossorigin="anonymous" />
-          <img id="itair" src="img/people/itair.png" crossorigin="anonymous" />
-          <img id="perrella" src="img/people/perrella.png" crossorigin="anonymous" />
-          <img id="serginho" src="img/people/serginho.png" crossorigin="anonymous" />
-          <img id="tiago" src="img/people/tiago.png" crossorigin="anonymous" />
-          <img id="wagner" src="img/people/wagner.png" crossorigin="anonymous" />
+          <img id="aecio" src="img/aecio-min.png" crossorigin="anonymous" />
+          <img id="alberto" src="img/alberto-min.png" crossorigin="anonymous" />
+          <img id="ceni" src="img/ceni-min.png" crossorigin="anonymous" />
+          <img id="choro" src="img/choro-min.png" crossorigin="anonymous" />
+          <img id="fe" src="img/fe-min.png" crossorigin="anonymous" />
+          <img id="bola" src="img/bola-min.png" crossorigin="anonymous" />
+          
+          <img id="gordo" src="img/gordo-min.png" crossorigin="anonymous" />
+          <img id="itair" src="img/itair-min.png" crossorigin="anonymous" />
+          <img id="perrella" src="img/perrella-min.png" crossorigin="anonymous" />
+          <img id="serginho" src="img/serginho-min.png" crossorigin="anonymous" />
+          <img id="tiago" src="img/tiago-min.png" crossorigin="anonymous" />
+          <img id="wagner" src="img/wagner-min.png" crossorigin="anonymous" />
           
           <a-mixin id="text" text="align: center; value: anos na serie B"></a-mixin>
          
@@ -273,7 +274,7 @@
         <a-text mixin="text"  rotation="0 310 0" font="kelsonsans" position="8.9 4.65 -0.94" width="8" wrap-count="10"></a-text> 
         <a-text id="score" color="blue" rotation="0 310 0" text="value: 1;" font="kelsonsans" position="9.8 7.34 -1" width="60"></a-text> 
         <a-text id="timer" rotation="0 50 0" text="value: 30'';" font="kelsonsans" position="-9.8 7.34 -1" width="60" color="green"></a-text> 
-        
+        <!-- esse eh o outro trofeu. tirei por tamanho
         <a-entity id="throw0"
                   class="throw"
                   dynamic-body 
@@ -284,7 +285,18 @@
                   shadow rotation="0 90 0"
                   scale="0.1 0.2 0.1"
                   material="src: #copabr; repeat: 50 10"></a-entity>   
-        <a-entity id="throw1" 
+       -->
+       <a-entity id="throw0" 
+                  class="throw"
+                  dynamic-body 
+                  velocity="0 0 20" 
+                  sound="src: #sfx-rosca; autoplay: false;" 
+                  obj-model="obj: #trophy2-obj;" 
+                  position="0 5 20" 
+                  shadow rotation="0 90 0"
+                  scale="0.7 0.7 0.7"
+                  material="src: #copabr; repeat: 5 5"></a-entity>           
+       <a-entity id="throw1" 
                   class="throw"
                   dynamic-body 
                   velocity="0 0 20" 
@@ -484,8 +496,7 @@
 
             var enemiestimer = setInterval(function(){
                 var enemies = document.getElementsByClassName("enemy");
-                for (var i = 0; i < enemies.length; i++) {
-                    enemies.item(i).body.velocity.set(0, 0, 2.5);;
+                for (var i = 0; i < enemies.length; i++) {                    enemies.item(i).body.velocity.set(0, 0, 2.5);;
                 }    
             },1000) 
 
