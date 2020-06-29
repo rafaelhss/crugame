@@ -218,11 +218,11 @@
          
        <!--   
         <audio id="sfx-gun" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ftrimmed-40MM%20M79%20grenade%20launcher%20single%20shot%20close%20perspective_BLASTWAVEFX_09562.mp3?1510643217955" crossorigin="anonymous" ></audio>
-        <audio id="sfx-copabr" src="sound/copabr.ogg" crossorigin="anonymous" preload="true" ></audio>
-        <audio id="sfx-rosca" src="sound/rosca.ogg" crossorigin="anonymous" preload="true" ></audio>
-        <audio id="sfx-fala" src="sound/falazeze.ogg" crossorigin="anonymous" preload="true" ></audio>
-        <audio id="sfx-cagao" src="sound/cagao.ogg" crossorigin="anonymous" preload="true" ></audio>
-        <audio id="sfx-serieb" src="sound/serieb.ogg" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-copabr" src="sound/copabr.mp3" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-rosca" src="sound/rosca.mp3" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-fala" src="sound/falazeze.mp3" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-cagao" src="sound/cagao.mp3" crossorigin="anonymous" preload="true" ></audio>
+        <audio id="sfx-serieb" src="sound/serieb.mp3" crossorigin="anonymous" preload="true" ></audio>
      
           
           <img id="orangesrc" src="https://cdn.glitch.com/1d750fac-a652-409d-949b-156f935085a2%2Ff7d31bc38804a89a6b288f718296cc27.jpg?1510638410703" crossorigin="anonymous" /> 
@@ -446,10 +446,12 @@
   <script>
     var currThrow = 0;
     var time = 30
-    var score = 1; 
+    var score = 1;
+    var mp3 = document.createElement("audio");
+        
     
       
-    function toggleFinish(hide){
+    function tmp3leFinish(hide){
         var v = true;
         var s = "3 3 3";
         if(hide){
@@ -484,7 +486,7 @@
         
             
                 
-        toggleFinish(true);
+        tmp3leFinish(true);
         
         
         
@@ -518,7 +520,7 @@
 
 
 
-                toggleFinish(false);
+                tmp3leFinish(false);
 
                 clearInterval(tempointerval);
 
@@ -535,26 +537,26 @@
     }
 
       
+   function playSound(){
+       if(mp3.paused){
+        var sounds = ["cagao.mp3", "copabr.mp3", "falazeze.mp3", "rosca.mp3", "serieb.mp3"]
+        mp3.setAttribute('src', 'sound/' + sounds[Math.floor(Math.random()*sounds.length)]);
+        mp3.load();
+        document.documentElement.appendChild(mp3);
+        mp3.play();
+       }
+   }       
       
    function init(){
-        try{
-        
-            setInterval(function(){
-                var sounds = ["cagao.ogg", "copabr.ogg", "falazeze.ogg", "rosca.ogg", "serieb.ogg"]
-                var mp3 = document.createElement("audio");
-                mp3.setAttribute('src', 'sound/' + sounds[Math.floor(Math.random()*sounds.length)]);
-                mp3.load();
-                document.documentElement.appendChild(mp3);
-                mp3.play();
-           }, 2000); 
-
-           window.addEventListener('mouseup', function () {
+        try{  
+            window.addEventListener('mouseup', function () {
                 dothrow("#throw" + currThrow);
                 currThrow = currThrow + 1;
                 if(currThrow > 4){
                     currThrow=0
                 }
                 jumpPeople(3);
+               playSound();
                 
                 
             });
