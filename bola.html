@@ -448,10 +448,11 @@
     var time = 30
     var score = 1;
     var mp3 = document.createElement("audio");
+    var st = undefined;
         
     
       
-    function tmp3leFinish(hide){
+    function toggleFinish(hide){
         var v = true;
         var s = "3 3 3";
         if(hide){
@@ -484,9 +485,10 @@
         document.getElementById("ghost").body.position.set(8.5, 15, -2.5);
         document.getElementById("ghost").setAttribute("rotation","0, 310, 0");
         
-            
+         
+       startSoundtrack();   
                 
-        tmp3leFinish(true);
+        toggleFinish(true);
         
         
         
@@ -520,7 +522,10 @@
 
 
 
-                tmp3leFinish(false);
+                toggleFinish(false);
+                
+                st.src = "";
+                st = undefined;
 
                 clearInterval(tempointerval);
 
@@ -537,6 +542,27 @@
     }
 
       
+   function startSoundtrack(){
+           
+       if(!st){
+        st = document.createElement("audio");
+        st.setAttribute('src', 'sound/itair.mp3');
+        st.setAttribute('loop','true');
+        st.volume = 0.3;
+        st.load();
+        document.documentElement.appendChild(st);
+        st.play();   
+        st.addEventListener('timeupdate', function(){
+            var buffer = .50
+            if(this.currentTime > this.duration - buffer){
+                this.currentTime = 0
+                this.play()
+            }
+        });   
+           
+       }
+        
+   }      
    function playSound(){
        if(mp3.paused){
         var sounds = ["cagao.mp3", "copabr.mp3", "falazeze.mp3", "rosca.mp3", "serieb.mp3"]
@@ -556,7 +582,7 @@
                     currThrow=0
                 }
                 jumpPeople(3);
-               playSound();
+               playSound();    
                 
                 
             });
